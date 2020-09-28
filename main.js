@@ -1,43 +1,15 @@
-name_of_the_student_array=[];
-function submit(){
-    var display_student_array=[];
-    for (var j=1;j<=4;j++)
-    {
-        var name_of_the_student=document.getElementById("name_of_the_student_"+j).value;
-        console.log(name_of_the_student);
-        name_of_the_student_array.push(name_of_the_student);
+menu_list_array = ["Farmhouse","Chicken Pepperoni","Chicken Dominator","Chicken Fiesta","Chicken Sausage","Peri Peri Pizza","Cheese N Corn","Margherita","Double Cheese Margherita","Onion, Ginger, Tomato, Pepperoni"];
+
+function add_item(){
+    var htmldata;
+    var item=document.getElementById("add_item").value;
+    menu_list_array.push(item);
+    menu_list_array.sort();
+    htmldata="<section class='cards'>"
+    for(var i=0;i<menu_list_array.length;i++){
+
+        htmldata=htmldata+'<div class="card">' +'<img src="images/pizzaImg.png"/>' + menu_list_array[i] + '</div>'
     }
-    console.log(name_of_the_student_array);
-    var length_of_the_name_of_the_student_array=name_of_the_student_array.length;
-    console.log(length_of_the_name_of_the_student_array);
-    for (var k=0;k<length_of_the_name_of_the_student_array;k++)
-    {
-      display_student_array.push("<h4>Name-"+name_of_the_student_array[k]+"</h4>");
-      console.log(display_student_array);
-    }
-    console.log(display_student_array);
-    document.getElementById("display_name_with_commas").innerHTML=display_student_array;
-    var remove_comma=display_student_array.join(" ");
-    console.log(remove_comma);
-    document.getElementById("display_name_without_commas").innerHTML=remove_comma;
-    document.getElementById("submit_button").style.display="none";
-    document.getElementById("sort_button").style.display="inline-block";
-}
-function sorting(){
-  name_of_the_student_array.sort();
-  console.log(name_of_the_student_array);
-  var display_student_array_sorting=[];
-  var length_of_the_name_of_the_student_array=name_of_the_student_array.length;
-  console.log(length_of_the_name_of_the_student_array);
-  for (var k=0;k<length_of_the_name_of_the_student_array;k++){
-    display_student_array_sorting.push("<h4>Name- "+name_of_the_student_array[k]+"</h4>");
-    console.log(display_student_array_sorting);
-  }
-  var remove_comma=display_student_array_sorting.join(" ");
-  console.log(remove_comma);
-  document.getElementById("display_name_without_commas").innerHTML=remove_comma;
-}
-//Additional Activities//
-function new_update(){
-  document.getElementById("display_name_without_commas").innerHTML="<h1>"+name_of_the_student_array+"</h1>";
+      htmldata=htmldata+"</section>"
+      document.getElementById("display_addedmenu").innerHTML = htmldata;
 }

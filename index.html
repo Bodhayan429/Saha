@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>C80</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="main.js"></script>
-
+    <title>Pizzaria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+<script src="main.js"></script>
 </head>
+
 <body>
-<center>
-<h3 style="margin-top: 20px; margin-bottom: 20px; ">
-	List of the students in my class
-</h3>
+    <div class="topnav">
+        <a class="active" href="#">Pizzaria</a>
+        <div class="topnav-right">
+         <a href="#viewblock">View Menu</a>
+         <a href="#addTopings">Add Menu</a>
+        </div>
+    </div>
 
-<div id="rows">
-<span>1</span>
-<input type="text" placeholder="Name of the Student" id="name_of_the_student_1">
-<br>
+    <div class="row" id="viewblock">
+        <div  class="img_div"> 
+            <img class="img-responsive"  src="images/pizza.png">
+        </div>
+      <!-- Add menu_div here and create button to call getmenu() -->
+      <div class="dropdown">
+        <button class="dropbtn">Show Menu</button>
+        <div class="dropdown-content">
+          <p>1)Farmhouse</p>
+          <p>2)Chicken Pepperoni</p>
+          <p>3)Chicken Dominator</p>
+          <p>4)Chicken Fiesta</p>
+          <p>5)Chicken Sausage</p>
+          <p>6)Peri Peri Pizza</p>
+          <p>7)Cheese N Corn</p>
+          <p>8)Margherita</p>
+          <p>9)Double Cheese Margherita</p>
+          <p>10)Onion, Ginger, Tomato, Pepperoni</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="newRow" id="addTopings">
+        <div class="block1">
+            <input id="add_item" placeholder="Type here to add toppings?"/></br>
+            <button id="add_toppings" onclick="add_item()" >Recommend a new Pizza</button>
+        </div>
+        
+    </div>
+     <!-- Add display_addedmenu div here! -->
+     <div class="block2">
+        <div id="display_addedmenu">
+        </div>
+    </div>
+     </div>
+    <div>
+        <img class="img-responsive"  src="images/topping.png">
+    </div>
 
-<span>2</span>
-<input type="text" placeholder="Name of the Student" id="name_of_the_student_2">
-<br>
-
-<span>3</span>
-<input type="text" placeholder="Name of the Student" id="name_of_the_student_3">
-<br>
-
-<span>4</span>
-<input type="text" placeholder="Name of the Student" id="name_of_the_student_4">
-</div>
-
-<button onclick="submit()" id="submit_button">
-	Submit
-</button>
-
-<div id="display_name_with_commas">
-</div>
-
-<hr>
-
-<div id="display_name_without_commas">
-</div>
-
-
-<button onclick="sorting()" id="sort_button">
-	Sort
-</button>
-<!--Additional Activities-->
-<br/>
-<button onclick="new_update()">New Update Button</button>
-</center>
-
-</script>
 </body>
 </html>
