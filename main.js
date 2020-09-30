@@ -1,15 +1,31 @@
-menu_list_array = ["Farmhouse","Chicken Pepperoni","Chicken Dominator","Chicken Fiesta","Chicken Sausage","Peri Peri Pizza","Cheese N Corn","Margherita","Double Cheese Margherita","Onion, Ginger, Tomato, Pepperoni"];
-
-function add_item(){
-    var htmldata;
-    var item=document.getElementById("add_item").value;
-    menu_list_array.push(item);
-    menu_list_array.sort();
-    htmldata="<section class='cards'>"
-    for(var i=0;i<menu_list_array.length;i++){
-
-        htmldata=htmldata+'<div class="card">' +'<img src="images/pizzaImg.png"/>' + menu_list_array[i] + '</div>'
-    }
-      htmldata=htmldata+"</section>"
-      document.getElementById("display_addedmenu").innerHTML = htmldata;
+canvas=document.getElementById("myCanvas");
+ctx=canvas.getContext("2d");
+color="green";
+ctx.beginPath();
+ctx.strokeStyle=color;
+ctx.lineWidth=2;
+ctx.arc(200,200,40,0,2*Math.PI);
+ctx.stroke();
+canvas.addEventListener("mousedown",my_mousedown);
+function my_mousedown(e) {
+    //Taking color from the input box
+    //Additional Activity Starts
+    color=document.getElementById("color").value;
+    console.log(color);
+    //Additional Activity Ends
+    mouse_x=e.clientX-canvas.offsetLeft;
+    mouse_y=e.clientY-canvas.offsetTop;
+    console.log("X= "+mouse_x+",Y= "+mouse_y);
+    circle(mouse_x,mouse_y);
+}
+function circle(mouse_x,mouse_y) {
+    ctx.beginPath();
+    ctx.strokeStyle=color;
+    ctx.lineWidth=2;
+    ctx.arc(mouse_x,mouse_y,40,0,2*Math.PI);
+    ctx.stroke(); 
+}
+//Additional Activity
+function clearArea() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 }
