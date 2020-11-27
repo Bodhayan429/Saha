@@ -1,6 +1,6 @@
 .body_background 
 {
-    background-image: url("background.png");
+    background-image: url("avenger_bg.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -39,3 +39,17 @@ a
 	border-radius: 10px;
 	margin-bottom: 10px;
 }
+h1
+{
+	border-radius: 10px;
+	width: 200px;
+	padding: 5px;
+	background-color: azure;
+ }
+ h4
+{
+	border-radius: 10px;
+	width: 200px;
+	padding: 5px;
+	background-color: azure;
+ }
