@@ -1,47 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>C85</title>
+	<title>📟Maths Quiz</title>
 
-<link rel="stylesheet" href="style.css">
-
-<script src="fabric.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<body class="body_background">
+<link rel="stylesheet" type="text/css" href="game.css">
 
-	<center>
-
-	<h2 class="btn-primary">SuperHero</h2>
-
-	<div id="head_info" class="btn-danger">
-		<h3>Current Width  =<span id="current_width">30</span> </h3>
-		<h3>Current Height  =<span id="current_height">30</span> </h3>
-	</div>
-	<canvas width="1000" height="600" id="myCanvas"></canvas>
-	<h1>Keyboard Controls</h1>
-	<h4>a-Iron Man Left Hand</h4>
-	<h4>b-Hulk Body</h4>
-	<h4>c-Iron Man Right Hand</h4>
-	<h4>d-Thor Face</h4>
-	<h4>e-Iron Man legs</h4>
-	<h4>f-Iron Man Face</h4>
-	<h4>g-Hulk Right Hand</h4>
-	<h4>h-Captain America Left Hand</h4>
-	<h4>i-Hulk Left Hand</h4>
-	<h4>j-Hulk Face</h4>
-	<h4>k-Spider-Man Face</h4>
-	<h4>l-Spiderman Legs</h4>
-	<h4>m-Spider-Man Body</h4>
-    <h4>n-Spider-Man Left Hand</h4>
-    <h4>o-Spider-Man Right Hand</h4>
-    <h4>r-Thor Right Hand</h4>
-    <h4>q-Mix</h4>
-	</center>
-	<script src="main.js"></script>
+<script src="game_login.js"></script>
+</head>
+<body>
+<center>
+  <h1>Math Quiz</h1>
+  <div class="col-lg-4 col-sm-8 col-xs-11 login_div1">
+	  <h3>Player 1 login for the game</h3>
+	  <label>User Name:</label>
+	  <input type="text" id="player1_name_input" class="form-control" placeholder="Player 1 Name">
+	  <br>
+  </div>
+  <br>
+  <div class="col-lg-4 col-sm-8 col-xs-11 login_div2">
+	<h3>Player 2 login for the game</h3>
+	<label>User Name:</label>
+	<input type="text" id="player2_name_input" class="form-control" placeholder="Player 2 Name">
+	<br>
+</div>
+<br>
+<button style="width: 30%" class="btn btn-success" onclick="addUser()"><span class="glyphicon glyphicon-user"> LOGIN</span></button>
+</center>
 </body>
 </html>
