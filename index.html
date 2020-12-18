@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Maths Quiz</title>
+	<title>Lets Chat!!</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="game.css">
 
-<script src="game_login.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="kwitter.js"></script>
 </head>
 <body>
 <center>
-  <h1>Math Quiz</h1>
-  <div class="col-lg-4 col-sm-8 col-xs-11 login_div1">
-	  <h3>Player 1 login for the game</h3>
-	  <label>User Name:</label>
-	  <input type="text" id="player1_name_input" class="form-control" placeholder="Player 1 Name">
-	  <br>
-  </div>
-  <br>
-  <div class="col-lg-4 col-sm-8 col-xs-11 login_div2">
-	<h3>Player 2 login for the game</h3>
-	<label>User Name:</label>
-	<input type="text" id="player2_name_input" class="form-control" placeholder="Player 2 Name">
-	<br>
-</div>
-<br>
-<button style="width: 30%" class="btn btn-success" onclick="addUser()"><span class="glyphicon glyphicon-user"> LOGIN</span></button>
+	<div class="jumbotron text-center">
+		<h1 class="header">Lets Chat!!!
+			<sup>
+				<img src="m2.png">
+		    </sup>
+		</h1>
+		<p>See what is happening in the world right now</p> 
+		<form>
+		  <div class="input-group">
+			<input type="text" id="user_name" class="form-control" placeholder="User Name" autofocus>
+			<div class="input-group-btn">
+			  <button type="button" class="btn btn-danger" id="login_button" onclick="addUser()">Login</button>
+			</div>
+		  </div>
+		</form>
+	  </div>
 </center>
 </body>
 </html>
