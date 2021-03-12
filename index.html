@@ -1,42 +1,74 @@
-<html>
-    <head>
-       <title>My Selfie App</title>
- <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-<link href="style.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js" integrity="sha512-AQMSn1qO6KN85GOfvH6BWJk46LhlvepblftLHzAv1cdIyTWPBKHX+r+NOXVVw6+XQpeW4LJk/GTmoP48FLvblQ==" crossorigin="anonymous"></script>
-
-</head>
  
-<body>
-    <div class="container">
-    <center>
-        <a href="" id="link" download="myselfie.png"></a>
-        <h1>Voice Selfie App 
-        <img id="logo_img" src="selfie.jpeg">
-        </h1>
-        <hr>
-        <h4 style="color:red;">Please press allow as soon as popup comes. After you give a voice command</h4>
-        
-        <div class="form-group">
-            <h3>Say "take my selfie"</h3>
-            <label>Your voice output : </label>
-            <textarea class="form-control" id="textbox" readonly="true"></textarea>
-        </div>
-        <button class="btn btn-primary" onclick="start()">Start</button>
-        <p>Press the Start button</p>
+<html>
+  <head>
+    <title>Hand Gesture App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-        <label>Your webcam : </label>
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+  <div class="container">
+  
+    <center>
+      <h3 class="btn btn-warning heading">HAND GESTURE APP
+      <br>
+      <span>&#128076;</span>
+      <span>&#128077;</span>
+      <span>&#9996;</span>
+      <span>&#9994;</span>
+      <span>&#128079;</span>
+      <span>&#129304;</span>
+    </h3>
+      <br>
+      <br>
+      <p style="font-size: 22px;">Take a selfie of a gesture to know about its meaning
+      	<br>
+        <p style="font-size: 18px;">On the following gestures the model is trained -</p>
+        <br>
+        <br>
+        <h3 class="btn btn-warning heading">
+          <br>
+          <span>&#128076;</span>
+          <span>&#128077;</span>
+          <span>&#9996;</span>
+        </h3>
+      </p>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <label>Webcam View-</label>
         <div id="camera"></div>
         <br>
-        <label>Your selife Will Display Here: </label>
+        <br>
+        <button onclick="take_snapshot();" class="btn btn-warning">Capture Image</button>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <label>Prediction 1</label>
+        <p class="emotion_name" id="result_emotion_name1"></p>
+        <p class="emoji" id="update_emoji1"></p>
+        <label>Prediction 2</label>
+        <p class="emotion_name" id="result_emotion_name2"></p>
+        <p class="emoji" id="update_emoji2"></p>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+	      <label>Snapshot - </label>
         <div id="result"></div>
-    </center>
-    </div>
+        <br><br>
+        <button onclick="check();" class="btn btn-success">Predict</button>
+      </div>
 
-    <script src="main.js"></script>
-</body>
+    </center>
+
+  </div>
+
+<script src="main.js"></script>
+
+  </body>
 </html>
+
+ 

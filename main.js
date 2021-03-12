@@ -1,47 +1,63 @@
-var SpeechRecognition = window.webkitSpeechRecognition;
-var recognition = new SpeechRecognition();
-var Textbox = document.getElementById("textbox");
-function start() {
-    Textbox.innerHTML = "";
-    recognition.start();
-}
-recognition.onresult = function(event) {
-    console.log(event);
-    var Content = event.results[0][0].transcript;
-    Textbox.innerHTML = Content;
-    console.log(Content);
-    if (Content == "take my selfie") {
-        console.log("taking selfie-----");
-        speak();
-    }
-}
-function speak() {
-    var synth = window.speechSynthesis;
-    speak_data = "taking a selfie in five seconds"
-    var utterThis = new SpeechSynthesisUtterance(speak_data);
-    synth.speak(utterThis);
-    Webcam.attach(camera);
-    setTimeout(function()
-    {
-        take_selfie();
-        save();
-    },5000);
-}
+prediction_1= ""
+prediction_2= ""
 Webcam.set({
-    width: 360,
-    height: 250,
-    image_format: 'jpeg',
-    jpeg_quality: 90
-  });
+  width:350,
+  height:300,
+  image_format:'png',
+  png_quality:90
+});
 camera = document.getElementById("camera");
-function take_selfie() {
-    Webcam.snap(function(data_uri){
-        document.getElementById("result").innerHTML = '<img id="selfie_img" src="'+data_uri+'"/>';
-    });
-}
-function save() {
-    link = document.getElementById("link");
-    image = document.getElementById("selfie_img").src;
-    link.href = image;
-    link.click();
-}
+
+Webcam.attach('#camera');
+ function take_snapshot() {
+     Webcam.snap(function(data_uri) {
+         document.getElementById("result").innerHTML = '<img id="captured_image" src="'+ data_uri +'"/>';
+     });
+ }
+ console.log('ml5 version:', ml5.version);
+ classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Kkpi-7Ell/model.json',modelLoaded);
+ function modelLoaded() {
+     console.log('Model is Loaded!');
+ }
+ function speak() {
+     var synth= window.speechSynthesis;
+     speak_data_1= "The first prediction is " + prediction_1;
+     speak_data_2= "The second prediction is " + prediction_2;
+     var utterThis= new SpeechSynthesisUtterance(speak_data_1 + speak_data_2);
+     synth.speak(utterThis);
+ }
+ function check() {
+     img= document.getElementById('captured_image');
+     classifier.classify(img,gotResult);
+ }
+ function gotResult(error,results) {
+     if(error) {
+         console.error(error);
+     }
+     else{
+         console.log(results);
+         document.getElementById("result_emotion_name1").innerHTML = results[0].label;
+         document.getElementById("result_emotion_name2").innerHTML = results[1].label;
+         prediction_1 = results[0].label;
+         prediction_2 = results[1].label;
+         speak();
+         if(results[0].label == "Best") {
+             document.getElementById("update_emoji1").innerHTML= "&#128077;";
+         }
+         if(results[0].label == "Victory") {
+            document.getElementById("update_emoji1").innerHTML= "&#9996;";
+        }
+        if(results[0].label == "Amazing") {
+            document.getElementById("update_emoji1").innerHTML= "&#128076;";
+        }
+        if(results[1].label == "Best") {
+            document.getElementById("update_emoji2").innerHTML= "&#128077;";
+        }
+        if(results[1].label == "Victory") {
+           document.getElementById("update_emoji2").innerHTML= "&#9996;";
+       }
+       if(results[1].label == "Amazing") {
+           document.getElementById("update_emoji2").innerHTML= "&#128076;";
+       }
+     }
+ }

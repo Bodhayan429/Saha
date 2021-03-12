@@ -1,0 +1,1 @@
+https://teachablemachine.withgoogle.com/models/Kkpi-7Ell/model.json
