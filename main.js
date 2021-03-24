@@ -1,63 +1,46 @@
-prediction_1= ""
-prediction_2= ""
-Webcam.set({
-  width:350,
-  height:300,
-  image_format:'png',
-  png_quality:90
-});
-camera = document.getElementById("camera");
+function preload() {
+}
+function setup() {
+    canvas= createCanvas(640,480);
+    canvas.position(150,150);
+    video= createCapture(VIDEO);
+    video.hide();
+}
+function draw() {
+    image(video, 230, 150, 220, 200);
 
-Webcam.attach('#camera');
- function take_snapshot() {
-     Webcam.snap(function(data_uri) {
-         document.getElementById("result").innerHTML = '<img id="captured_image" src="'+ data_uri +'"/>';
-     });
- }
- console.log('ml5 version:', ml5.version);
- classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Kkpi-7Ell/model.json',modelLoaded);
- function modelLoaded() {
-     console.log('Model is Loaded!');
- }
- function speak() {
-     var synth= window.speechSynthesis;
-     speak_data_1= "The first prediction is " + prediction_1;
-     speak_data_2= "The second prediction is " + prediction_2;
-     var utterThis= new SpeechSynthesisUtterance(speak_data_1 + speak_data_2);
-     synth.speak(utterThis);
- }
- function check() {
-     img= document.getElementById('captured_image');
-     classifier.classify(img,gotResult);
- }
- function gotResult(error,results) {
-     if(error) {
-         console.error(error);
-     }
-     else{
-         console.log(results);
-         document.getElementById("result_emotion_name1").innerHTML = results[0].label;
-         document.getElementById("result_emotion_name2").innerHTML = results[1].label;
-         prediction_1 = results[0].label;
-         prediction_2 = results[1].label;
-         speak();
-         if(results[0].label == "Best") {
-             document.getElementById("update_emoji1").innerHTML= "&#128077;";
-         }
-         if(results[0].label == "Victory") {
-            document.getElementById("update_emoji1").innerHTML= "&#9996;";
-        }
-        if(results[0].label == "Amazing") {
-            document.getElementById("update_emoji1").innerHTML= "&#128076;";
-        }
-        if(results[1].label == "Best") {
-            document.getElementById("update_emoji2").innerHTML= "&#128077;";
-        }
-        if(results[1].label == "Victory") {
-           document.getElementById("update_emoji2").innerHTML= "&#9996;";
-       }
-       if(results[1].label == "Amazing") {
-           document.getElementById("update_emoji2").innerHTML= "&#128076;";
-       }
-     }
- }
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    circle (30, 20, 30);
+
+    fill(0, 255, 0);
+    stroke(0, 255, 0);
+    rect(45, 20, 565, 5);
+
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    circle (600, 20, 30);
+
+    fill(0, 255, 0);
+    stroke(0, 255, 0);
+    rect(600, 35, 5, 400);
+    
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    circle (600, 450, 30);
+
+    fill(0, 255, 0);
+    stroke(0, 255, 0);
+    rect(45, 450, 540, 5);
+
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    circle (30, 450, 30);
+
+    fill(0, 255, 0);
+    stroke(0, 255, 0);
+    rect( 30, 35, 5, 400);
+}
+function take_snapshot() {
+    save('my_pic.png');
+}
