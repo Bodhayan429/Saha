@@ -1,46 +1,31 @@
+muchX = 0;
+muchY = 0;
 function preload() {
+    much= loadImage('https://i.postimg.cc/3x3QzSGq/m.png');
 }
 function setup() {
-    canvas= createCanvas(640,480);
-    canvas.position(150,150);
-    video= createCapture(VIDEO);
+    canvas = createCanvas(300,300);
+    canvas.center();
+    video = createCapture(VIDEO);
+    video.size(300, 300);
     video.hide();
+    poseNet = ml5.poseNet(video, modalLoaded);
+    poseNet.on('pose',gotPoses);
+}
+function modalLoaded() {
+    console.log('PoseNet is initialized');
+}
+function gotPoses(results) {
+    if(results.length > 0) {
+        console.log(results);
+        muchX = results[0].pose.nose.x-40;
+        muchY = results[0].pose.nose.y;
+    }
 }
 function draw() {
-    image(video, 230, 150, 220, 200);
-
-    fill(255, 0, 0);
-    stroke(255, 0, 0);
-    circle (30, 20, 30);
-
-    fill(0, 255, 0);
-    stroke(0, 255, 0);
-    rect(45, 20, 565, 5);
-
-    fill(255, 0, 0);
-    stroke(255, 0, 0);
-    circle (600, 20, 30);
-
-    fill(0, 255, 0);
-    stroke(0, 255, 0);
-    rect(600, 35, 5, 400);
-    
-    fill(255, 0, 0);
-    stroke(255, 0, 0);
-    circle (600, 450, 30);
-
-    fill(0, 255, 0);
-    stroke(0, 255, 0);
-    rect(45, 450, 540, 5);
-
-    fill(255, 0, 0);
-    stroke(255, 0, 0);
-    circle (30, 450, 30);
-
-    fill(0, 255, 0);
-    stroke(0, 255, 0);
-    rect( 30, 35, 5, 400);
+    image(video, 0, 0, 300, 300);
+    image(much, muchX, muchY, 80, 35);
 }
 function take_snapshot() {
-    save('my_pic.png');
+    save('I_am_a_clown.png');
 }
