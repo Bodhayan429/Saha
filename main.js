@@ -1,31 +1,24 @@
-muchX = 0;
-muchY = 0;
-function preload() {
-    much= loadImage('https://i.postimg.cc/3x3QzSGq/m.png');
-}
 function setup() {
-    canvas = createCanvas(300,300);
+    canvas = createCanvas(300, 300);
     canvas.center();
     video = createCapture(VIDEO);
-    video.size(300, 300);
     video.hide();
-    poseNet = ml5.poseNet(video, modalLoaded);
-    poseNet.on('pose',gotPoses);
+    classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/GzAuVkpef/model.json' , modelLoaded);
 }
-function modalLoaded() {
-    console.log('PoseNet is initialized');
-}
-function gotPoses(results) {
-    if(results.length > 0) {
-        console.log(results);
-        muchX = results[0].pose.nose.x-40;
-        muchY = results[0].pose.nose.y;
-    }
+function modelLoaded() {
+    console.log("Model is Loaded!");
 }
 function draw() {
     image(video, 0, 0, 300, 300);
-    image(much, muchX, muchY, 80, 35);
+    classifier.classify(video, gotResult);
 }
-function take_snapshot() {
-    save('I_am_a_clown.png');
+function gotResult(error, results) {
+    if (error) {
+        console.log(error);
+    }
+    else{
+        console.log(results);
+        document.getElementById("result_object_name").innerHTML = results[0].label;
+        document.getElementById("result_object_accuracy").innerHTML = results[0].confidence.toFixed(3);
+    }
 }
