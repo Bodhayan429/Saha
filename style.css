@@ -1,54 +1,36 @@
+.heading {
+    font-size: 25px;
+    width: 100%;
+    margin: 0px;
+    box-shadow: 5px 5px 5px grey;
+}
+.heading_div {
+    float: none;
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+    box-shadow: 0px 0px 15px grey;
+}
+.heading_div2 {
+    font-size: 20px;
+}
+.result_para_tag {
+    box-shadow: 5px 5px 5px grey;
+    font-size: 20px;
+}
 .copy_right_footer {
     position: fixed;
-    color: #6c757d;
+    color: white;
     bottom: 0;
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: grey;
     line-height: 3;
     text-align: center;
-      font-family: 'Special Elite', cursive;
- 
- }
- ol h5
- {
-     background: white;
-     padding: 13px;
-     border-radius: 20px;
- }
- span
- {
-     color: red;
-     font-size: 16px;
- }	
- li img
- {
-     border-radius: 20px;
- }
- .bob
- {
-     background: #949494;
-     padding: 30px;
-     border-radius: 20px;
-     margin-top: 50px;
-     box-shadow: 5px 5px 18px grey;
- }
- b
- {
-     color: purple;
- }
- 
- .bob3
- {
-     text-align: center;
-     color: white;
- }
- .result
- {
-     box-shadow: 5px 5px 18px grey;
-     letter-spacing: 2px;
-     background: #F2BAC9;
-     border-radius: 20px;
-     margin-top:30px;
-     padding: 20px;
-     border:2px solid grey
- }
+}
+canvas {
+    border: 5px solid white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px grey;
+    margin-top: 150px;
+}

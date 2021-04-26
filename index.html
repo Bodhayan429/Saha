@@ -1,151 +1,51 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-	<title>CASE STUDY</title>
+  <title>Realtime Image Identification</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=53mvKOjwzGrN5-8Vfs0cgUSmuP-Qrf6oXD9ZTSJ6aiaiN8z1Tc37YAFsBnGqI9AnKZyaLhful-nzBdlnUIp09tModmbTW2VJnQs2T0BhJZz_5L4Zb2qYyfq3OjVQ6V9E" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9qeW55aHk5dnU1cjh4ejV6eTB1dHd3LW9uLmRydi50dy9DYXNlX1N0dWR5X1Byb2plY3RfR2wv"/><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+  <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
-<body>
 
-<div class="container">
-	<h4 style="text-align: center;font-family: 'Lexend Tera', sans-serif;">
-	<span >CASE STUDY BETWEEN GOOGLE LENS AND MOBILNET </span>
-	<br><br>
-	GOOGLE LENS <img src="gl.png" style="width: 150px;">
-	<p>
-		<b style="color: red;">VS</b>
-	</p>
-	<br>
-	<p class="btn btn-primary" style="font-size: 20px;">Mobilenet </p>
-	</h4>
+<body background="background.jpg">
+  <center>
+    <h3 class="btn btn-danger heading">Real Time Image Identification
+      <hr>
+      <center>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 heading_div">
+          Model is trained on:
+          <br>
+          <div class="btn btn-warning heading_div2">
+            MY FAMILY
+          </div>
+        </div>
+      </center>
+      <br>
+    </h3> 
+    <br>
+    <br>
+    <p class="btn btn-warning result_para_tag">Object: 
+      <span id="result_object_name"></span>
+    </p>
+    <br>
+    <br>
+    <p class="btn btn-warning result_para_tag">Accuracy: 
+      <span id="result_object_accuracy"></span>
+    </p>
+  </center>
+  <div class="copy_right_footer">
+    Developed by- Bodhayan Saha
+  </div>
+<script src="main.js"></script>
+</body>
 
-	<hr>
-	<ol style="padding:0px;">
-		<div class="bob col-xs-12">
-
-			<li class="col-sm-4 col-xs-12">
-				<b style="color: white;">Test Image - </b><img src="20210421_135545.jpg" class="img-responsive">
-			</li>
-			<h5 class="col-sm-4 col-xs-12" >Output on <b>GOOGLE LENS</b> -
-				<span>Water Bottle</span>  
-			</h5>
-			<h5 class="col-sm-4 col-xs-12">Output on <b>Mobilenet Model </b> -
-				<span>Water Bottle</span>  
-			</h5>
-
-			<div class="bob3" class="col-xs-12">
-				<h4>Result - </h4>
-				<hr>
-				<h4>Draw</h4>
-			</div>
-
-		</div>
-		<br>
-
-		<div class="bob col-xs-12">
-
-			<li class="col-sm-4 col-xs-12">
-				<b style="color: white;">Test Image - </b><img src="20210421_135626.jpg" class="img-responsive">
-			</li>
-			<h5 class="col-sm-4 col-xs-12" >Output on <b>GOOGLE LENS</b> -
-				<span>Scissors</span>  
-			</h5>
-			<h5 class="col-sm-4 col-xs-12">Output on <b>Mobilenet Model </b> -
-				<span>Hammer</span>  
-			</h5>
-
-			<div class="bob3" class="col-xs-12">
-				<h4>Result - </h4>
-				<hr>
-				<h4>GOOGLE LENS Is More Accurate</h4>
-			</div>
-
-		</div>
-				
-		<br>
-
-		<div class="bob col-xs-12">
-
-			<li class="col-sm-4 col-xs-12">
-				<b style="color: white;">Test Image - </b><img src="20210421_135707.jpg" class="img-responsive">
-			</li>
-			<h5 class="col-sm-4 col-xs-12" >Output on <b>GOOGLE LENS</b> -
-				<span>Spoon</span>  
-			</h5>
-			<h5 class="col-sm-4 col-xs-12">Output on <b>Mobilenet Model </b> -
-				<span>Mask</span>  
-			</h5>
-
-			<div class="bob3" class="col-xs-12">
-				<h4>Result - </h4>
-				<hr>
-				<h4>GOOGLE LENS Is More Accurate</h4>
-			</div>
-
-		</div>
-				
-		<br>
-
-		<div class="bob col-xs-12">
-
-			<li class="col-sm-4 col-xs-12">
-				<b style="color: white;">Test Image - </b><img src="20210421_135754.jpg" class="img-responsive">
-			</li>
-			<h5 class="col-sm-4 col-xs-12" >Output on <b>GOOGLE LENS</b> -
-				<span>One Plus 3T</span>  
-			</h5>
-			<h5 class="col-sm-4 col-xs-12">Output on <b>Mobilenet Model </b> -
-				<span>Television</span>  
-			</h5>
-
-			<div class="bob3" class="col-xs-12">
-				<h4>Result - </h4>
-				<hr>
-				<h4>GOOGLE LENS Is More Accurate</h4>
-			</div>
-
-		</div>
-				
-		<br>
-
-		<div class="bob col-xs-12">
-
-			<li class="col-sm-4 col-xs-12">
-				<b style="color: white;">Test Image - </b><img src="20210421_135852.jpg" class="img-responsive">
-			</li>
-			<h5 class="col-sm-4 col-xs-12" >Output on <b>GOOGLE LENS</b> -
-				<span>Winnie The Pooh Pencil Box</span>  
-			</h5>
-			<h5 class="col-sm-4 col-xs-12">Output on <b>Mobilenet Model </b> -
-				<span>Pencil Box, Pencil Case</span>  
-			</h5>
-
-			<div class="bob3" class="col-xs-12">
-				<h4>Result - </h4>
-				<hr>
-				<h4>GOOGLE LENS Is More Accurate</h4>
-			</div>
-
-		</div>
-				
-		<br>
-
-
-	</ol>
-<br><br>
-	<h4 class="col-xs-12 result">
-	I have tested 5 images<br>
-	 <b>GOOGLE LENS</b> have predicted all of them more accurately. And <b>MOBILENET</b> was less accurately<br>
-	 So according to my case study <b>GOOGLE LENS</b> is more Accurate</h4>
-</div>
-<br><br>
-
-    <div class="copy_right_footer">
-      Developed by - Bodhayan Saha
-    </div>
 </html>
+
+
