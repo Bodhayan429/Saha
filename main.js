@@ -1,33 +1,99 @@
-difference = 0;
+song1 = "";
+song2 = "";
+
+song1_status = "";
+song2_status = "";
+
+scoreRightWrist = 0;
+scoreLeftWrist = 0;
+
 rightWristX = 0;
+rightWristY = 0;
+
 leftWristX = 0;
+leftWristY = 0;
+
+function preload()
+{
+	song1 = loadSound("FGTeeV1.mp3");
+	song2 = loadSound("FGTeeV2.mp3");
+}
+
 function setup() {
-    video = createCapture(VIDEO);
-    video.size(550, 500);
-    canvas = createCanvas(550, 550);
-    canvas.position(560, 150);
-    poseNet = ml5.poseNet(video, modelLoaded);
-    poseNet.on('pose', gotPoses);
+	canvas =  createCanvas(600, 500);
+	canvas.center();
+
+	video = createCapture(VIDEO);
+	video.hide();
+
+	poseNet = ml5.poseNet(video, modelLoaded);
+	poseNet.on('pose', gotPoses);
 }
 
 function modelLoaded() {
-    console.log('PoseNet Is Initialized!');
+  console.log('PoseNet Is Initialized');
 }
 
-function gotPoses(results) {
-    if(results.length > 0) {
-        console.log(results);
-        leftWristX = results[0].pose.leftWrist.x;
-        rightWristX = results[0].pose.rightWrist.x;
-        difference = floor(leftWristX - rightWristX);
-        console.log("leftWristX = " + leftWristX + " rightWristX = " + rightWristX + " difference = " + difference);
-    }
+function gotPoses(results)
+{
+  if(results.length > 0)
+  {
+	console.log(results);
+	scoreRightWrist =  results[0].pose.keypoints[10].score;
+	scoreLeftWrist =  results[0].pose.keypoints[9].score;
+	console.log("scoreRightWrist = " + scoreRightWrist + "scoreLeftWrist = " + scoreLeftWrist);
+	
+	rightWristX = results[0].pose.rightWrist.x;
+	rightWristY = results[0].pose.rightWrist.y;
+	console.log("rightWristX = " + rightWristX +" rightWristY = "+ rightWristY);
+
+	leftWristX = results[0].pose.leftWrist.x;
+	leftWristY = results[0].pose.leftWrist.y;
+	console.log("leftWristX = " + leftWristX +" leftWristY = "+ leftWristY);
+		
+  }
 }
 
 function draw() {
-    background('#5285d1');
-    document.getElementById("square_side").innerHTML = "Font size of the text will be = " + difference + "px"
-    textSize(difference);
-    fill("#f09c2e");
-    text('Bodhayan', 50, 400);
+	image(video, 0, 0, 600, 500);
+	
+	song1_status = song1.isPlaying();
+	song2_status = song2.isPlaying();
+
+	fill("#FF0000");
+	stroke("#FF0000");
+
+	if(scoreRightWrist > 0.2)
+	{ 
+		circle(rightWristX,rightWristY,20);
+
+			song2.stop();
+
+		if(song1_status == false)
+		{
+			song1.play();
+			document.getElementById("song").innerHTML = "Playing - Psycho Pig"
+		}
+	}
+
+	if(scoreLeftWrist > 0.2)
+	{
+		circle(leftWristX,leftWristY,20);
+
+			song1.stop();
+
+		if(song2_status == false)
+		{
+			song2.play();
+			document.getElementById("song").innerHTML = "Playing - I'm a Gurkey Turkey"
+		}
+	}
+
+}
+
+function play()
+{
+	song.play();
+	song.setVolume(1);
+	song.rate(1);
 }
